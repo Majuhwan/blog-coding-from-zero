@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python Loops, For vs While, With Examples You Can Run | Coding From Zero</title><meta name="description" content="A beginner's guide to Python's for and while loops, including break, continue, and the loop else clause, with every example runnable in python3."><link rel="canonical" href="https://coding-from-zero.howlane.com/python-loops-for-vs-while/">
+<meta property="og:type" content="article"><meta property="og:title" content="Python Loops, For vs While, With Examples You Can Run | Coding From Zero"><meta property="og:description" content="A beginner's guide to Python's for and while loops, including break, continue, and the loop else clause, with every example runnable in python3."><meta property="og:url" content="https://coding-from-zero.howlane.com/python-loops-for-vs-while/"><meta property="og:site_name" content="Coding From Zero"><meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2b2d42"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%232b2d42%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2241%22%20font-family%3D%22Georgia%2C%20serif%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3ECZ%3C%2Ftext%3E%3C%2Fsvg%3E"><link rel="alternate" type="application/rss+xml" title="Coding From Zero" href="/feed.xml">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4370274902373682" crossorigin="anonymous"></script><style>:root{--accent:#2b2d42;--fg:#1f1f1f;--muted:#6b6b6b;--line:#e8e8e8;--bg:#fff;--card:#fff;--soft:#f6f6f4;--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--fg:#ececec;--muted:#a3a3a3;--line:#2c2c2c;--bg:#121212;--card:#181818;--soft:#1c1c1c}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.5}
+a{color:inherit}img,svg{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}.narrow{max-width:700px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);z-index:5}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:18px;letter-spacing:-.01em}.brand svg{width:34px;height:34px}
+nav a{text-decoration:none;color:var(--muted);margin-left:22px;font-size:15px}nav a:hover{color:var(--fg)}
+.hero{padding:56px 0 36px;border-bottom:1px solid var(--line)}.hero h1{font-family:var(--serif);font-size:clamp(34px,5vw,54px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+.hero p{font-size:19px;color:var(--muted);margin:0;max-width:640px}.hero .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-right:8px}
+.feat{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;padding:40px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.feat .cv{border-radius:14px;overflow:hidden;aspect-ratio:16/9}.feat .cv svg{width:100%;height:100%}
+.feat h2{font-family:var(--serif);font-size:32px;line-height:1.2;margin:8px 0 12px;letter-spacing:-.01em}.feat p{color:var(--muted);font-size:17px;margin:0 0 14px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.meta{font-size:14px;color:var(--muted)}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;padding:36px 0 64px}
+.card{text-decoration:none;display:flex;flex-direction:column;gap:10px}.card .cv{border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:var(--soft)}.card .cv svg{width:100%;height:100%}
+.card h3{font-family:var(--serif);font-size:22px;line-height:1.25;margin:2px 0 0}.card p{margin:0;color:var(--muted);font-size:15px}
+.card:hover h3,.feat:hover h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.sec-t{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:36px;margin:0}
+article.post{padding:48px 0 24px}article.post h1{font-family:var(--serif);font-size:clamp(32px,4.6vw,46px);line-height:1.15;letter-spacing:-.02em;margin:10px 0 14px}
+.sub{font-size:21px;color:var(--muted);line-height:1.45;margin:0 0 24px;font-family:var(--serif)}
+.byline{display:flex;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:32px}.byline svg{width:42px;height:42px}.byline b{display:block;font-size:15px}
+.pcover{border-radius:14px;overflow:hidden;aspect-ratio:21/9;margin:0 0 36px}.pcover svg{width:100%;height:100%}
+.body{font-family:var(--serif);font-size:20px;line-height:1.72}.body p{margin:0 0 1.25em}.body h2{font-family:var(--sans);font-size:26px;line-height:1.3;margin:1.8em 0 .6em;letter-spacing:-.01em}.body h3{font-family:var(--sans);font-size:21px;margin:1.5em 0 .5em}
+.body ul,.body ol{padding-left:1.3em;margin:0 0 1.25em}.body li{margin:.35em 0}.body a{color:var(--accent);text-underline-offset:3px}
+.body blockquote{margin:1.5em 0;padding:4px 0 4px 20px;border-left:3px solid var(--accent);color:var(--muted);font-style:italic}
+.body table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:16px;line-height:1.45;margin:0 0 1.5em}.body th,.body td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}.body th{font-weight:600;background:var(--soft)}
+.body code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;background:var(--soft);padding:2px 6px;border-radius:5px}.body pre{background:var(--soft);padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:15px;line-height:1.55}.body pre code{background:none;padding:0}
+.note{font-family:var(--sans);font-size:15px;background:var(--soft);border-radius:12px;padding:16px 18px;color:var(--muted);margin:28px 0}
+.src{font-family:var(--sans);font-size:15px;margin:32px 0 0;padding-top:20px;border-top:1px solid var(--line)}.src h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px}.src ol{padding-left:1.2em;margin:0}.src li{margin:6px 0;word-break:break-word}.src a{color:var(--accent)}
+.tags{margin:28px 0 0;display:flex;gap:8px;flex-wrap:wrap}.tags span{font-size:14px;background:var(--soft);border-radius:999px;padding:6px 14px}
+.more{border-top:1px solid var(--line);margin-top:48px}
+.page{padding:48px 0 64px}.page h1{font-family:var(--serif);font-size:42px;margin:0 0 20px}.page .body{font-size:19px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}footer a{color:var(--muted);text-decoration:none;margin-right:16px}
+@media (max-width:760px){.body table{display:block;overflow-x:auto}.body th,.body td{white-space:nowrap}.feat{grid-template-columns:1fr;gap:18px}nav a{margin-left:14px}.body{font-size:18px}.hero{padding:36px 0 24px}}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Python Loops, For vs While, With Examples You Can Run","description":"A beginner's guide to Python's for and while loops, including break, continue, and the loop else clause, with every example runnable in python3.","datePublished":"2026-10-09","dateModified":"2026-10-09","author":{"@type":"Organization","name":"Coding From Zero"},"publisher":{"@type":"Organization","name":"Coding From Zero"},"mainEntityOfPage":"https://coding-from-zero.howlane.com/python-loops-for-vs-while/","keywords":"python, programming basics, loops"}</script></head><body>
+<header class="top"><div class="wrap"><a class="brand" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2b2d42"/><text x="32" y="41" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">CZ</text></svg><span>Coding From Zero</span></a><nav><a href="/">Home</a><a href="/about/">About</a><a href="/feed.xml">RSS</a></nav></div></header>
+<main><article class="post narrow"><span class="tag">python</span><h1>Python Loops, For vs While, With Examples You Can Run</h1><p class="sub">A beginner's guide to Python's for and while loops, including break, continue, and the loop else clause, with every example runnable in python3.</p>
+<div class="byline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2b2d42"/><text x="32" y="41" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">CZ</text></svg><div><b>Coding From Zero</b><span class="meta">Oct 9, 2026 · 5 min read</span></div></div>
+<div class="pcover"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><linearGradient id="g7501" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(235 31% 92%)"/><stop offset="1" stop-color="hsl(260 21% 80%)"/></linearGradient></defs><rect width="1200" height="600" fill="url(#g7501)"/><circle cx="1198" cy="4" r="228" fill="hsl(229 26% 38%)" opacity="0.26"/><circle cx="699" cy="592" r="182" fill="hsl(248 26% 63%)" opacity="0.12"/><circle cx="49" cy="38" r="205" fill="hsl(240 26% 64%)" opacity="0.13"/><circle cx="1005" cy="520" r="241" fill="hsl(243 26% 44%)" opacity="0.13"/><circle cx="469" cy="260" r="224" fill="hsl(244 26% 47%)" opacity="0.27"/><circle cx="981" cy="110" r="227" fill="hsl(252 26% 56%)" opacity="0.15"/><circle cx="430" cy="544" r="73" fill="hsl(221 26% 58%)" opacity="0.36"/></svg></div>
+<div class="body"><p>Once you can write a single line of code, the next real milestone is getting code to repeat itself without you retyping it. Python gives you two main tools for this, the <code>for</code> loop and the <code>while</code> loop, and the official Python tutorial explains exactly how each one works and when to reach for which.</p>
+<h2>The for loop: when you know what you&#39;re iterating over</h2>
+<p>A <code>for</code> loop in Python is different from the &quot;count from 1 to 10&quot; style loop you may have seen described in other languages. The official tutorial explains: &quot;Python&#39;s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence.&quot; You are not managing a counter yourself; you are handing Python a collection and letting it walk through each item.</p>
+<pre><code class="language-python">words = [&#39;cat&#39;, &#39;window&#39;, &#39;defenestrate&#39;]
+for w in words:
+    print(w, len(w))
+</code></pre>
+<p>Running this prints each word followed by its length: <code>cat 3</code>, <code>window 6</code>, <code>defenestrate 12</code>. There is no manual counter variable anywhere in this code; Python handles the iteration itself.</p>
+<h2>Using range() to loop a specific number of times</h2>
+<p>When you do want the classic &quot;repeat this N times&quot; behavior, Python&#39;s built-in <code>range()</code> function generates exactly the sequence of numbers you need:</p>
+<pre><code class="language-python">for i in range(5):
+    print(i)
+</code></pre>
+<p>This prints 0, 1, 2, 3, 4, one per line. The official tutorial is specific about the boundary: &quot;The given end point is never part of the generated sequence,&quot; so <code>range(5)</code> produces five values (0 through 4), not six. You can also give <code>range()</code> a starting point and a step:</p>
+<pre><code class="language-python">print(list(range(5, 10)))        # [5, 6, 7, 8, 9]
+print(list(range(0, 10, 3)))     # [0, 3, 6, 9]
+</code></pre>
+<h2>The while loop: when you don&#39;t know how many times you&#39;ll repeat</h2>
+<p>A <code>while</code> loop repeats as long as a condition stays true, which makes it the right tool when you do not know in advance how many iterations you will need, for example repeatedly asking a user for input until they give you something valid.</p>
+<pre><code class="language-python">count = 5
+while count &gt; 0:
+    print(count)
+    count -= 1
+print(&quot;done&quot;)
+</code></pre>
+<p>This prints 5, 4, 3, 2, 1, then &quot;done.&quot; The loop keeps running as long as <code>count &gt; 0</code> stays true, and stops the moment that condition becomes false. Unlike a <code>for</code> loop over a known sequence, nothing here tells Python in advance how many times the loop will run; it is entirely determined by the condition.</p>
+<h2>break and continue: controlling a loop from the inside</h2>
+<p>Both loop types support two keywords for changing their normal behavior mid-loop. The official tutorial defines <code>break</code> as exiting &quot;the innermost enclosing for or while loop&quot; immediately, and <code>continue</code> as moving straight to &quot;the next iteration of the loop&quot; without running the rest of the current iteration&#39;s code.</p>
+<pre><code class="language-python">for n in range(2, 10):
+    for x in range(2, n):
+        if n % x == 0:
+            print(f&quot;{n} equals {x} * {n // x}&quot;)
+            break
+</code></pre>
+<p>Run this and you will see output like <code>4 equals 2 * 2</code>, <code>6 equals 2 * 3</code>, <code>8 equals 2 * 4</code>, <code>9 equals 3 * 3</code>. As soon as the inner loop finds any number x that divides evenly into n, it prints the factorization and immediately exits the inner loop with <code>break</code>, rather than continuing to check the remaining values of x.</p>
+<pre><code class="language-python">for num in range(2, 10):
+    if num % 2 == 0:
+        print(f&quot;Found an even number {num}&quot;)
+        continue
+    print(f&quot;Found an odd number {num}&quot;)
+</code></pre>
+<p>This prints one line for every number 2 through 9. When <code>num</code> is even, <code>continue</code> skips straight to the next number without running the final <code>print</code> line in that same iteration, which is why each even number only gets one line of output, not two.</p>
+<h2>The loop&#39;s own else clause (a genuinely confusing Python feature)</h2>
+<p>Python allows a <code>for</code> or <code>while</code> loop to have its own <code>else</code> clause, which runs only if the loop finished normally, without being stopped early by a <code>break</code>. The official tutorial&#39;s own example uses this to detect prime numbers:</p>
+<pre><code class="language-python">for n in range(2, 10):
+    for x in range(2, n):
+        if n % x == 0:
+            print(n, &#39;equals&#39;, x, &#39;*&#39;, n // x)
+            break
+    else:
+        print(n, &#39;is a prime number&#39;)
+</code></pre>
+<p>Running this prints &quot;2 is a prime number,&quot; &quot;3 is a prime number,&quot; &quot;4 equals 2 * 2,&quot; &quot;5 is a prime number,&quot; &quot;6 equals 2 * 3,&quot; &quot;7 is a prime number,&quot; &quot;8 equals 2 * 4,&quot; and &quot;9 equals 3 * 3.&quot; The <code>else</code> block only runs for the numbers where the inner loop never found a factor and so never hit <code>break</code>, which is exactly the definition of a prime number. The official tutorial notes a key detail: this <code>else</code> belongs to the <code>for</code> loop, not to the <code>if</code> statement nested inside it, which is the single most common source of confusion with this feature.</p>
+<h2>Choosing between for and while</h2>
+<ul>
+<li><strong>Use a <code>for</code> loop</strong> when you are iterating over a known collection (a list, string, or range) and you know in advance roughly how many items you are working through.</li>
+<li><strong>Use a <code>while</code> loop</strong> when the stopping condition depends on something that happens during the loop itself, like user input, a calculation result, or an external event, and you cannot know the number of iterations ahead of time.</li>
+<li><strong>Use <code>break</code></strong> to exit a loop early once you have found what you were looking for, avoiding unnecessary additional iterations.</li>
+<li><strong>Use <code>continue</code></strong> to skip the rest of the current iteration&#39;s code without exiting the whole loop.</li>
+</ul>
+<h2>Key takeaways</h2>
+<ul>
+<li>A Python <code>for</code> loop iterates directly over the items of a sequence (list, string, or range) rather than managing a manual counter yourself.</li>
+<li><code>range(n)</code> generates numbers from 0 up to but not including n; <code>range(start, stop, step)</code> lets you customize the starting point and increment.</li>
+<li>A <code>while</code> loop is the right choice when you do not know in advance how many iterations you need, since it depends only on a condition staying true.</li>
+<li><code>break</code> exits a loop immediately; <code>continue</code> skips to the next iteration without running the remaining code in the current one.</li>
+<li>A loop&#39;s <code>else</code> clause runs only if the loop completed without hitting a <code>break</code>, which the official tutorial uses to elegantly detect prime numbers.</li>
+</ul>
+</div>
+<section class="src"><h2>Sources</h2><ol><li><a href="https://docs.python.org/3/tutorial/controlflow.html" rel="noopener" target="_blank">Python Software Foundation, The Python Tutorial, More Control Flow Tools</a></li></ol></section>
+<div class="tags"><span>python</span><span>programming basics</span><span>loops</span></div></article>
+<section class="more"><div class="wrap"><h2 class="sec-t">More from Coding From Zero</h2><div class="list"><a class="card" href="/python-dictionaries-explained/"><div class="cv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><linearGradient id="g7299" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(235 31% 92%)"/><stop offset="1" stop-color="hsl(260 21% 80%)"/></linearGradient></defs><rect width="1200" height="675" fill="url(#g7299)"/><path d="M0 404 Q 600 212 1200 500 L 1200 675 L 0 675 Z" fill="hsl(245 26% 62%)" opacity="0.10"/><path d="M0 313 Q 600 103 1200 418 L 1200 675 L 0 675 Z" fill="hsl(253 26% 42%)" opacity="0.12"/><path d="M0 251 Q 600 132 1200 310 L 1200 675 L 0 675 Z" fill="hsl(210 26% 44%)" opacity="0.08"/><path d="M0 367 Q 600 113 1200 494 L 1200 675 L 0 675 Z" fill="hsl(217 26% 63%)" opacity="0.16"/><path d="M0 147 Q 600 -108 1200 275 L 1200 675 L 0 675 Z" fill="hsl(239 26% 63%)" opacity="0.08"/><path d="M0 440 Q 600 186 1200 566 L 1200 675 L 0 675 Z" fill="hsl(249 26% 50%)" opacity="0.12"/><path d="M0 468 Q 600 309 1200 547 L 1200 675 L 0 675 Z" fill="hsl(239 26% 48%)" opacity="0.10"/></svg></div><div><span class="tag">python</span><h3>Python Dictionaries Explained With Simple Examples</h3><p>A beginner guide to Python dictionaries, covering keys and values, adding and deleting items, get() versus KeyError, looping, and counting things.</p><div class="meta">Oct 11, 2026 · 3 min read</div></div></a><a class="card" href="/python-lists-for-beginners/"><div class="cv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><linearGradient id="g2922" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(235 31% 92%)"/><stop offset="1" stop-color="hsl(260 21% 80%)"/></linearGradient></defs><rect width="1200" height="675" fill="url(#g2922)"/><circle cx="489" cy="162" r="105" fill="hsl(215 26% 50%)" opacity="0.34"/><circle cx="290" cy="275" r="161" fill="hsl(234 26% 36%)" opacity="0.28"/><circle cx="235" cy="410" r="57" fill="hsl(250 26% 40%)" opacity="0.15"/><circle cx="231" cy="652" r="249" fill="hsl(223 26% 49%)" opacity="0.13"/><circle cx="1157" cy="551" r="117" fill="hsl(241 26% 49%)" opacity="0.17"/><circle cx="663" cy="451" r="227" fill="hsl(240 26% 54%)" opacity="0.30"/><circle cx="53" cy="529" r="198" fill="hsl(215 26% 42%)" opacity="0.16"/></svg></div><div><span class="tag">python</span><h3>Python Lists for Beginners, Create, Index, Slice, and Change</h3><p>How Python lists work for beginners, including indexing, slicing, adding and removing items, sorting, and the copy mistake that surprises everyone.</p><div class="meta">Oct 11, 2026 · 4 min read</div></div></a><a class="card" href="/how-to-read-a-python-error-message/"><div class="cv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><linearGradient id="g5311" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(235 31% 92%)"/><stop offset="1" stop-color="hsl(260 21% 80%)"/></linearGradient></defs><rect width="1200" height="675" fill="url(#g5311)"/><rect x="223" y="241" width="239" height="149" rx="25" fill="hsl(234 26% 60%)" opacity="0.17" transform="rotate(-6 223 241)"/><rect x="109" y="634" width="321" height="201" rx="33" fill="hsl(243 26% 39%)" opacity="0.24" transform="rotate(16 109 634)"/><rect x="1167" y="618" width="363" height="227" rx="38" fill="hsl(254 26% 36%)" opacity="0.23" transform="rotate(15 1167 618)"/><rect x="384" y="393" width="73" height="46" rx="8" fill="hsl(251 26% 43%)" opacity="0.34" transform="rotate(-16 384 393)"/><rect x="419" y="595" width="156" height="97" rx="16" fill="hsl(244 26% 42%)" opacity="0.24" transform="rotate(-17 419 595)"/><rect x="722" y="487" width="207" height="129" rx="22" fill="hsl(228 26% 47%)" opacity="0.23" transform="rotate(7 722 487)"/><rect x="1052" y="436" width="104" height="65" rx="11" fill="hsl(217 26% 58%)" opacity="0.30" transform="rotate(-7 1052 436)"/></svg></div><div><span class="tag">python</span><h3>How to Read a Python Error Message</h3><p>A guide to understanding Python tracebacks and the most common beginner errors, with tested examples from the official Python documentation.</p><div class="meta">Oct 9, 2026 · 4 min read</div></div></a></div></div></section></main>
+<footer><div class="wrap"><div>&copy; 2026 Coding From Zero · A <a href="https://howlane.com/">Howlane</a> site</div><div><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS</a></div></div></footer>
+</body></html>
